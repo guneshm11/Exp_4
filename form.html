@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Form</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <h1 align="center">User Form</h1>
+
+      <div class="col-lg-6 m-auto d-block">
+        <form name="form1" action="#" onsubmit="return validation()" class="bg-light">
+          <div class="form-group">
+            <label for="user" class="font-weight-bold"> Username: </label>
+            <input
+              type="text"
+              name="yourname"
+              class="form-control"
+              id="user"
+              autocomplete="off"
+            />
+            <span id="username" class="text-danger font-weight-bold"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-bold"> Password: </label>
+            <input
+              type="text"
+              name="pass"
+              class="form-control"
+              id="pass"
+              autocomplete="off"
+            />
+            <span id="passwords" class="text-danger font-weight-bold"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-bold"> Confirm Password: </label>
+            <input
+              type="text"
+              name="conpass"
+              class="form-control"
+              id="conpass"
+              autocomplete="off"
+            />
+            <span id="confrmpass" class="text-danger font-weight-bold"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-bold"> Mobile Number: </label>
+            <input
+              type="text"
+              name="mobile"
+              class="form-control"
+              id="mobileNumber"
+              autocomplete="off"
+            />
+            <span id="mobileno" class="text-danger font-weight-bold"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-bold"> Email: </label>
+            <input
+              type="text"
+              name="Email"
+              class="form-control"
+              id="emails"
+              autocomplete="off"
+            />
+            <span id="emailids" class="text-danger font-weight-bold"> </span>
+          </div>
+          <div class="form-group">
+          <label class="font-weight-bold">Birth Date: </label>
+          <input 
+          type="date" 
+          id="birthday" 
+          name="birthday"
+          class="form-control font-weight-bold"
+          />
+          <span id="date" class="text-danger font-weight-bold"> </span>
+          </div>
+          <div class="form-group">
+          <label class="font-weight-bold">City: </label>
+          <select name="city" id="city" value="City" class="form-control font-weight-bold" >
+          <option selected disabled>--Select City--</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Delhi">Navi-Mumbai</option>
+          <option value="Pune">Pune</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Kochi">Kochi</option>
+        </select>
+        <span id="emailids" class="text-danger font-weight-bold"> </span>
+         </div>
+         <div class= "form-control">
+         <label class="font-weight-bold">Programming Languages Known: </label><br>
+         <input class="font-weight-bold" type="checkbox" id="first">C++</input><br>
+        <p  class="font-weight-bold"id="text" style="display:none">C++</p>
+        <input class="font-weight-bold" type="checkbox" id="second">Java</input><br>
+      <p class="font-weight-bold" id="text1" style="display:none">Java</p>
+          <input class="font-weight-bold" type="checkbox" id="third">JavaScript</input><br>
+      <p class="font-weight-bold" id="text2" style="display:none">JavaScript</p>
+      <input class="font-weight-bold" type="checkbox" id="fourth">Python</input><br>
+      <p class="font-weight-bold" id="text3" style="display:none">Python</p>
+
+          <input
+            type="submit"
+            name="submit"
+            value="Submit"
+            class="btn btn-success"
+            autocomplete="off"
+            onclick= "validation();"
+          />
+        </form>
+        <br /><br />
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function validation() {
+        var user = document.getElementById("user").value;
+        var pass = document.getElementById("pass").value;
+        var confirmpass = document.getElementById("conpass").value;
+        var mobileNumber = document.getElementById("mobileNumber").value;
+        var emails = document.getElementById("emails").value;
+        var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+        if (user == "") {
+          document.getElementById("username").innerHTML =
+            " ** Please fill the username field";
+          return false;
+        }
+        if (user.length <= 7 || user.length > 20) {
+          document.getElementById("username").innerHTML =
+            " ** Username lenght must be between 8 and 20";
+          return false;
+        }
+        if (!isNaN(user)) {
+          document.getElementById("username").innerHTML =
+            " ** only characters are allowed";
+          return false;
+        }
+
+        if (pass == "") {
+          document.getElementById("passwords").innerHTML =
+            " ** Please fill the password field";
+          return false;
+        }
+        if (pass != confirmpass) {
+          document.getElementById("confrmpass").innerHTML =
+            " ** Password does not match the confirm password";
+          return false;
+        }
+
+        if (confirmpass == "") {
+          document.getElementById("confrmpass").innerHTML =
+            " ** Please fill the confirmpassword field";
+          return false;
+        }
+
+        if (mobileNumber == "") {
+          document.getElementById("mobileno").innerHTML =
+            " ** Please fill the mobile NUmber field";
+          return false;
+        }
+        if (isNaN(mobileNumber)) {
+          document.getElementById("mobileno").innerHTML =
+            " ** user must write digits only not characters";
+          return false;
+        }
+        if (mobileNumber.length != 10) {
+          document.getElementById("mobileno").innerHTML =
+            " ** Mobile Number must be 10 digits only";
+          return false;
+        }
+
+        if (emails == "") {
+          document.getElementById("emailids").innerHTML =
+            " ** Please fill the email idx` field";
+          return false;
+        }
+        if (emails.indexOf("@") <= 0) {
+          document.getElementById("emailids").innerHTML = " ** Invalid Email";
+          return false;
+        }
+
+        if (
+          emails.charAt(emails.length - 4) != "." &&
+          emails.charAt(emails.length - 3) != "."
+        ) {
+          document.getElementById("emailids").innerHTML =
+            " ** . Invalid Position";
+          return false;
+        }
+        
+        else {
+    DispWin = window.open('','NewWin', 'toolbar=no,status=no,width=600,height=400')
+    message = "<ul><li><b>NAME: </b>" + document.form1.yourname.value;
+    message += "<li><b>Email: </b>" + document.form1.Email.value;
+    message += "<li><b>Birthdate: </b>" + document.form1.birthday.value;
+    message += "<li><b>City: </b>" + document.form1.city.value;
+    message += "<li><b>Mobile Number: </b>" + document.form1.mobileNumber.value;
+    message += "<li><b>Languages Known: </b>" 
+    
+  var checkBox = document.getElementById("first");
+  var checkBox1 = document.getElementById("second");
+  var checkBox2 = document.getElementById("third");
+  var checkBox3 = document.getElementById("fourth");
+ 
+
+  if (checkBox.checked == true){
+   message += "<li>C++</li>"
+  } else {
+    text.style.display = "none";
+  }
+
+ if (checkBox1.checked == true){
+   message += "<li>Java</li>"
+  } else {
+    text.style.display = "none";
+  }
+
+ if (checkBox2.checked == true){
+   message += "<li>Javascript</li>"
+  } else {
+    text.style.display = "none";
+  } 
+  if (checkBox3.checked == true){
+   message += "<li>Python</li>"
+  } else {
+    text.style.display = "none";
+  }
+  
+  
+  + "</ul>";
+
+  DispWin.document.write(message);
+}
+      }
+      
+    </script>
+  </body>
+</html>
